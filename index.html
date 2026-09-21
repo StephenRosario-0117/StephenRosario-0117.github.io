@@ -1,25 +1,862 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephen Rosario</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Stephen Rosario | AI Researcher & Software Engineer</title>
+
+  <meta
+    name="description"
+    content="Stephen Rosario is a software engineer, AI researcher, and physicist working across scientific reasoning, computational science, and semiconductor technology."
+  />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --background: #f7f8fa;
+      --surface: #ffffff;
+      --text: #111318;
+      --muted: #626873;
+      --light-muted: #8b919b;
+      --border: #dde1e7;
+      --accent: #173f73;
+      --accent-light: #e9f0f8;
+
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* ---------------- NAVIGATION ---------------- */
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(247, 248, 250, 0.94);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .name {
+      font-family: "Manrope", sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .cv-link {
+      color: var(--accent) !important;
+      font-weight: 500;
+    }
+
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+      padding: 130px 0 110px;
+    }
+
+    .eyebrow {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: "Manrope", sans-serif;
+      font-weight: 500;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      max-width: 1000px;
+    }
+
+    .hero-description {
+      margin-top: 40px;
+      max-width: 680px;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 30px;
+      margin-top: 38px;
+    }
+
+    .text-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--text);
+    }
+
+    .text-link.accent {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ---------------- CURRENT ---------------- */
+
+    .current {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .current-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr;
+      gap: 50px;
+      padding: 38px 0;
+      align-items: start;
+    }
+
+    .section-label {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.68rem;
+      color: var(--light-muted);
+    }
+
+    .current-item h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .current-item p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* ---------------- GENERAL SECTIONS ---------------- */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 50px;
+      margin-bottom: 65px;
+    }
+
+    .section-header h2 {
+      font-family: "Manrope", sans-serif;
+      font-weight: 500;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    /* ---------------- RESEARCH ---------------- */
+
+    .research-list {
+      border-top: 1px solid var(--border);
+    }
+
+    .research-item {
+      display: grid;
+      grid-template-columns: 180px 1fr 340px;
+      gap: 50px;
+      padding: 45px 0;
+      border-bottom: 1px solid var(--border);
+      transition: transform 0.2s ease;
+    }
+
+    .research-item:hover {
+      transform: translateX(5px);
+    }
+
+    .number {
+      font-family: "DM Mono", monospace;
+      color: var(--light-muted);
+      font-size: 0.8rem;
+    }
+
+    .research-item h3 {
+      font-family: "Manrope", sans-serif;
+      font-size: 1.65rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+    }
+
+    .research-item p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.75;
+    }
+
+    /* ---------------- SELECTED WORK ---------------- */
+
+    .work {
+      background: var(--surface);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .work-card {
+      min-height: 330px;
+      border: 1px solid var(--border);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      border-color: #aeb5bf;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    .card-category {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.65rem;
+      color: var(--accent);
+    }
+
+    .arrow {
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    .work-card h3 {
+      font-family: "Manrope", sans-serif;
+      font-weight: 500;
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 15px;
+    }
+
+    .work-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      max-width: 470px;
+    }
+
+    /* ---------------- EXPERIENCE ---------------- */
+
+    .experience-list {
+      border-top: 1px solid var(--border);
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr;
+      gap: 50px;
+      padding: 35px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .date {
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--light-muted);
+    }
+
+    .company {
+      font-family: "Manrope", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .role {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* ---------------- ABOUT ---------------- */
+
+    .about {
+      background: #111318;
+      color: #ffffff;
+    }
+
+    .about .section-label {
+      color: #7e8794;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 50px;
+    }
+
+    .about-text {
+      max-width: 760px;
+    }
+
+    .about-text h2 {
+      font-family: "Manrope", sans-serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.15;
+      letter-spacing: -0.045em;
+      margin-bottom: 40px;
+    }
+
+    .about-text p {
+      color: #b5bac3;
+      margin-bottom: 20px;
+      max-width: 680px;
+      line-height: 1.8;
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+    footer {
+      background: #111318;
+      color: #ffffff;
+      border-top: 1px solid #2a2e35;
+      padding: 45px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 25px;
+      font-size: 0.82rem;
+      color: #9ba1aa;
+    }
+
+    .copyright {
+      font-family: "DM Mono", monospace;
+      color: #717782;
+      font-size: 0.7rem;
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+
+    @media (max-width: 800px) {
+      .nav-links a:not(.cv-link) {
+        display: none;
+      }
+
+      .hero {
+        padding: 90px 0 80px;
+      }
+
+      .current-grid,
+      .section-header,
+      .research-item,
+      .experience-item,
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .research-item {
+        padding: 35px 0;
+      }
+
+      .section-header {
+        margin-bottom: 45px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Stephen Rosario</h1>
 
-    <p>
-        Software Engineer at Lam Research |
-        M.S. Applied Data Science, USC |
-        B.A. Physics
-    </p>
+  <!-- NAVIGATION -->
 
-    <h2>Research Interests</h2>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="name" href="#">Stephen Rosario</a>
 
-    <p>
-        Artificial Intelligence · Machine Learning · AI for Science ·
-        Anomaly Detection · Scientific Machine Learning
-    </p>
+        <div class="nav-links">
+          <a href="#research">Research</a>
+          <a href="#work">Selected Work</a>
+          <a href="#experience">Experience</a>
+          <a href="#about">About</a>
+          <a class="cv-link" href="#">CV ↗</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="eyebrow">
+          Artificial Intelligence · Computational Science
+        </div>
+
+        <h1>
+          Building reliable AI systems for scientific discovery.
+        </h1>
+
+        <p class="hero-description">
+          I'm Stephen Rosario, a software engineer, researcher, and physicist
+          working across artificial intelligence, scientific reasoning,
+          computational science, and semiconductor technology.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#research" class="text-link accent">Explore Research</a>
+          <a href="#work" class="text-link">Selected Work</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CURRENTLY -->
+
+    <div class="current">
+      <div class="container">
+
+        <div class="current-grid">
+
+          <div class="section-label">
+            Currently
+          </div>
+
+          <div class="current-item">
+            <h3>University of Southern California</h3>
+            <p>M.S. Applied Data Science · 2025–2027</p>
+          </div>
+
+          <div class="current-item">
+            <h3>LAM Research</h3>
+            <p>Software Engineer · Semiverse Solutions</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- RESEARCH -->
+
+    <section id="research">
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-label">
+            Research
+          </div>
+
+          <h2>
+            Research interests spanning AI and the physical sciences.
+          </h2>
+
+        </div>
+
+
+        <div class="research-list">
+
+          <a href="#" class="research-item">
+
+            <div class="number">01</div>
+
+            <h3>
+              Machine Scientific Reasoning
+            </h3>
+
+            <p>
+              Developing methods for reliable, traceable, and
+              evidence-grounded scientific reasoning, including autonomous
+              hypothesis generation, research-gap identification, evidence
+              synthesis, and uncertainty measurement.
+            </p>
+
+          </a>
+
+
+          <a href="#" class="research-item">
+
+            <div class="number">02</div>
+
+            <h3>
+              AI for Engineering Systems
+            </h3>
+
+            <p>
+              Applying deep learning, computer vision, anomaly detection,
+              digital twins, and machine learning to complex engineering
+              systems and semiconductor manufacturing.
+            </p>
+
+          </a>
+
+
+          <a href="#" class="research-item">
+
+            <div class="number">03</div>
+
+            <h3>
+              Computational Science
+            </h3>
+
+            <p>
+              Computational modeling across energetic materials,
+              electrochemistry, physics, scientific machine learning,
+              and data-driven physical systems.
+            </p>
+
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SELECTED WORK -->
+
+    <section class="work" id="work">
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-label">
+            Selected Work
+          </div>
+
+          <h2>
+            Research and engineering.
+          </h2>
+
+        </div>
+
+
+        <div class="work-grid">
+
+          <a href="#" class="work-card">
+
+            <div class="card-top">
+              <span class="card-category">AI Research</span>
+              <span class="arrow">↗</span>
+            </div>
+
+            <div>
+              <h3>SARA</h3>
+
+              <p>
+                An experimental research-intelligence platform exploring
+                evidence-grounded scientific reasoning, hypothesis generation,
+                research-gap validation, and consensus measurement.
+              </p>
+            </div>
+
+          </a>
+
+
+          <a href="#" class="work-card">
+
+            <div class="card-top">
+              <span class="card-category">Deep Learning</span>
+              <span class="arrow">↗</span>
+            </div>
+
+            <div>
+              <h3>Vision Anomaly Detection</h3>
+
+              <p>
+                Investigation of efficient computer-vision models for anomaly
+                detection in industrial and semiconductor environments.
+              </p>
+            </div>
+
+          </a>
+
+
+          <a href="#" class="work-card">
+
+            <div class="card-top">
+              <span class="card-category">Computational Physics</span>
+              <span class="arrow">↗</span>
+            </div>
+
+            <div>
+              <h3>Reactive Burn Modeling</h3>
+
+              <p>
+                Calibration and analysis of AWSD reactive-burn models for
+                PBX energetic materials using experimental data and
+                hydrodynamic simulation.
+              </p>
+            </div>
+
+          </a>
+
+
+          <a href="#" class="work-card">
+
+            <div class="card-top">
+              <span class="card-category">Materials Science</span>
+              <span class="arrow">↗</span>
+            </div>
+
+            <div>
+              <h3>Solid Polymer Electrolytes</h3>
+
+              <p>
+                Experimental investigation of hybrid aqueous/ionic-liquid
+                polymer electrolytes and their electrochemical transport
+                properties.
+              </p>
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- EXPERIENCE -->
+
+    <section id="experience">
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-label">
+            Experience
+          </div>
+
+          <h2>
+            Engineering and scientific research.
+          </h2>
+
+        </div>
+
+
+        <div class="experience-list">
+
+          <div class="experience-item">
+            <div class="date">2024 — PRESENT</div>
+
+            <div class="company">
+              LAM Research
+            </div>
+
+            <div class="role">
+              Software Engineer · Semiverse Solutions
+            </div>
+          </div>
+
+
+          <div class="experience-item">
+            <div class="date">2023</div>
+
+            <div class="company">
+              Los Alamos National Laboratory
+            </div>
+
+            <div class="role">
+              Research Intern · XTD Safety & Surety
+            </div>
+          </div>
+
+
+          <div class="experience-item">
+            <div class="date">2022 — PRESENT</div>
+
+            <div class="company">
+              Hunter College
+            </div>
+
+            <div class="role">
+              Undergraduate Researcher · Greenbaum Lab
+            </div>
+          </div>
+
+
+          <div class="experience-item">
+            <div class="date">2022 — 2023</div>
+
+            <div class="company">
+              CCNY / NOAA / NSF
+            </div>
+
+            <div class="role">
+              Researcher · Machine Learning & Hydrology
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+      <div class="container">
+
+        <div class="about-content">
+
+          <div class="section-label">
+            About
+          </div>
+
+          <div class="about-text">
+
+            <h2>
+              From physics to computational science to artificial intelligence.
+            </h2>
+
+            <p>
+              I am a software engineer and researcher with a background in
+              physics and computational science. My work has crossed national
+              laboratory research, materials science, machine learning,
+              semiconductor technology, and artificial intelligence.
+            </p>
+
+            <p>
+              I earned my B.A. in Physics from Hunter College and am currently
+              pursuing an M.S. in Applied Data Science at the University of
+              Southern California.
+            </p>
+
+            <p>
+              My current research interests center on reliable machine
+              reasoning and the development of AI systems capable of supporting
+              rigorous scientific discovery.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container">
+
+      <div class="footer-inner">
+
+        <div class="copyright">
+          © 2026 STEPHEN ROSARIO
+        </div>
+
+        <div class="footer-links">
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Google Scholar</a>
+          <a href="mailto:your-email@example.com">Email</a>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
 </body>
 </html>
